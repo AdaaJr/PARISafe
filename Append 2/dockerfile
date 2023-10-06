@@ -1,0 +1,11 @@
+FROM php:7.4-apache
+
+# Installez les extensions PHP si nécessaire
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Copiez vos fichiers source
+COPY ./site /var/www/html/
+
+EXPOSE 80
+
+CMD ["apache2-foreground"]

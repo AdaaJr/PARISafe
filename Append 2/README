@@ -1,0 +1,81 @@
+README : Append Web Project
+
+Ce README vous guidera sur la manière de lancer le projet Append en utilisant Docker et docker-compose.
+
+Prérequis :
+
+Docker installé.
+Docker Compose installé.
+
+
+Sur MacOS (en utilisant Docker Desktop):
+Installation de Docker: Visitez Docker Desktop pour Mac et suivez les instructions pour télécharger et installer Docker Desktop.
+docker-compose: Il est inclus avec Docker Desktop pour Mac, donc aucune étape supplémentaire n'est nécessaire.
+
+
+
+Étapes pour exécuter le projet :
+
+1. Ouvre le projet :
+Ouvre le projet APPEND sur ton VS Code, puis ouvre une commande dans ton VS COde. Tu as pas besoin de faire cd ou jsp quoi
+
+2. Nettoyez les conteneurs et volumes précédents (si nécessaire) :
+Si vous avez déjà lancé le projet précédemment et souhaitez recommencer à partir d'une installation propre, exécutez les commandes suivantes :
+
+docker-compose down
+docker volume rm append_db_data
+
+
+3. Construisez les images Docker :
+Construisez les images nécessaires pour le projet sans utiliser le cache :
+
+docker-compose build --no-cache
+
+
+4. Démarrez les services :
+Lancez les conteneurs en arrière-plan :
+
+
+docker-compose up -d
+À ce stade, le site web Append devrait être accessible via un navigateur web à l'adresse http://localhost:8080/.
+
+Arrêt du projet :
+
+Pour arrêter les conteneurs et nettoyer les ressources, vous pouvez exécuter :
+
+docker-compose down
+
+
+
+
+
+Moi à chaque modification du code, je relance les commandes :
+
+docker-compose down
+docker volume rm append_db_data
+docker-compose build --no-cache
+docker-compose up -d
+
+
+Il reste à bien configurer la page login, la page inscription, a voir pour l'api OpenData (faut sur la changer, je savais plus tu avais utiliser laquel)
+La gestion des privilèges 
+
+
+
+
+
+
+
+
+Pour les commandes de MariaDB : Pré Requis, tu dois avoir deja fait ça 
+    - docker-compose build --no-cache
+    - docker-compose up -d
+
+
+Pour te connecter à la bdd, tu dois commencer à faire : docker-compose exec db mysql -u root -p
+Ca va te demander un mot de passe, c'est 1234.
+Ensuite tu fais : USE PARISafe
+
+
+
+Apres le reste ca reste du SQL, genre SELECT * FROM Utilisateur
